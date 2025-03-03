@@ -1,0 +1,97 @@
+PROGRAM : QUEUE USING ARRAY 
+            #include <iostream.h> 
+#include<conio.h> 
+ 
+#define MAXSIZE 10 
+ 
+class Queue { 
+    int arr[MAXSIZE]; 
+    int front, rear; 
+     
+    public: 
+    Queue() { 
+        front = -1; 
+        rear = -1; 
+    } 
+    void enqueue(int num)   // Insert item in Queue 
+    { 
+        if(rear >= MAXSIZE){ 
+            cout << "\n Queue is FULL "; 
+        } 
+        else 
+        { 
+            rear++; 
+            if(front == -1){ 
+                front = rear; 
+            } 
+            arr[rear] = num; 
+        } 
+         
+    } 
+     
+    void delqueue(){ 
+        int item; 
+        if(front > rear) 
+        { 
+            cout << "\n Queue is EMPTY "; 
+        } 
+        else 
+        { 
+             
+            item = arr[front]; 
+            cout << "\n Item deleted is " <<item; 
+            front++; 
+        } 
+    } 
+     
+     
+  
+ 
+ 
+ 
+   void display(){ 
+         int i = front; 
+        cout << "\n Queue Elements \n"; 
+         if (i == -1) { 
+             i = 0; 
+         } 
+         while(i <= rear){ 
+             cout << "   " << arr[i]; 
+             i++; 
+         } 
+      } 
+}; 
+ 
+   
+int main() 
+{ 
+    Queue Q1; 
+    int choice, item; 
+   clrscr(); 
+    do{    
+    cout << "\n 1. Insert item in Queue "; 
+    cout << "\n 2. Delete item from Queue "; 
+    cout << "\n 3. Display Queue Element "; 
+    cout << "\n 4. Exit Program "; 
+    cout << "\n Enter your choice "; 
+    cin >> choice; 
+    switch(choice){ 
+        case 1: 
+           cout << "\n Enter item to be inserted : "; 
+           cin >> item; 
+           Q1.enqueue(item); 
+           break; 
+        case 2: 
+            Q1.delqueue(); 
+            break; 
+        case 3: 
+            Q1.display(); 
+            break; 
+        case 4: 
+           exit(1); 
+             
+    } 
+    }while(1); 
+ 
+    return 0;
+}
