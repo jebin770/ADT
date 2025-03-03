@@ -195,4 +195,165 @@ do
  }//end of switch 
  }while(1); 
  return 0;//end of while 
+e void list::insert_end(int it) 
+{ 
+  node *newnode=new node(); 
+  node *trav=new node(); 
+  newnode->data=it; 
+  newnode->next=NULL; 
+   trav=head; 
+  while(trav->next!=NULL) 
+   trav=trav->next; 
+  trav->next=newnode; 
+} 
+ 
+void list::insert_middle(int it,int loc) 
+ { 
+  node *newnode=new node();//modified 
+  node *trav=new node();//modified 
+  newnode->data=it; 
+  newnode->next=NULL; 
+  trav=head; 
+  while(trav!=NULL) 
+ { 
+  if(trav->data==loc) 
+ { 
+  newnode->next=trav->next; 
+  trav->next=newnode; 
+ } 
+ trav=trav->next; 
+ }//end of while 
+}//end of insert 
+ 
+void list::display() 
+ { 
+  node *trav=new node();//modified 
+  trav=head; 
+  while(trav!=NULL) 
+ { 
+  cout<<trav->data<<"->"; 
+  trav = trav->next;//modified 
+ } 
+ cout<<endl; 
+} 
+ 
+void list::del_head() 
+{ 
+    
+    head = head->next; 
+} 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+        void list::del_end(){ 
+    node *trav = head; 
+    node *prev; 
+    while(trav->next != NULL) 
+    { 
+        prev = trav; 
+        trav = trav->next; 
+    } 
+    prev->next = NULL; 
+} 
+ 
+void list::del_node(int d){ 
+    node *trav = head; 
+    node *prev; 
+    while(trav->next != NULL){ 
+        if(trav->data == d){ 
+            prev->next = trav->next; 
+            break; 
+        } 
+        prev = trav; 
+        trav = trav->next; 
+    } 
+} 
+ 
+  int main() 
+ { 
+  list lst; 
+  int choice,item,pos; 
+ 
+do 
+ { 
+  cout<<"\n1.insert at head\n"; 
+  cout<<"2.insert at end\n"; 
+  cout<<"3.insert in middle\n"; 
+  cout<<"4.display list\n"; 
+  cout<<"5.Delete Head node\n"; 
+  cout<<"6.Delete Tail node\n"; 
+  cout<<"7.Delete a middle node\n"; 
+  cout<<"Press any key except (1 - 7) to stop \n"; 
+  cout<<"enter your choice:"; 
+  cin>>choice; 
+  switch (choice) 
+  { 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+  case 1: 
+   cout<<"enter element to insert"; 
+   cin>>item; 
+   lst.insert_head(item); 
+   break; 
+  case 2: 
+   cout<<"an enter element to insert at end:"; 
+   cin>>item; 
+   lst.insert_end(item); 
+   break; 
+  case 3: 
+   cout<<"\n enter location data to insert:"; 
+   cin>>pos; 
+   cout<<"\n enter item to inset:"; 
+   cin>>item; 
+   lst.insert_middle(item,pos); 
+   break; 
+  case 4: 
+   cout<<"list elements are:\n"; 
+   lst.display(); 
+   break; 
+  case 5: 
+    lst.del_head(); 
+    cout<<"\nList after deleting Head node \n"; 
+    lst.display(); 
+    break; 
+  case 6: 
+    lst.del_end(); 
+    cout<<"\nList After Delting Tail node\n"; 
+    lst.display(); 
+    break; 
+  case 7: 
+    cout<<"\nEnter the node to be deleted : "; 
+    cin>>item; 
+    lst.del_node(item); 
+    cout<<"List After Deleting a middle Node : \n"; 
+    lst.display(); 
+    break; 
+     
+  default: 
+   cout<<"end of program\n"; 
+  exit(0); 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ }//end of switch 
+ }while(1); 
+ return 0;//end of while 
+}//end of main 
+ 
                 
